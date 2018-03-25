@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
-import './style.styl'
-import App from './App'
+import './styles/style.styl'
+import App from './containers/App'
 
 render(<App />, document.getElementById('root'))
 
