@@ -1,3 +1,6 @@
 module.exports = {
-  extends: ['standard', 'react']
+    extends: ['standard', 'react'],
+    rules: {
+        indent: ['error', 2]
+    }
 }
