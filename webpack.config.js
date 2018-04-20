@@ -1,5 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const prod = process.env.NODE_ENV === 'production'
 
 module.exports = {
   entry: './src/index.js',
@@ -7,7 +9,7 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'docs')
   },
-  devtool: 'inline-source-map',
+  devtool: prod ? 'source-map' : 'inline-source-map',
   devServer: {
     contentBase: './docs',
     compress: true,
@@ -34,6 +36,7 @@ module.exports = {
   },
   plugins: [
     new webpack.NamedModulesPlugin(),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new BundleAnalyzerPlugin()
   ]
 }
