@@ -4,8 +4,8 @@
   "description": "Simple boilerplate with React, Webpack, and styled components",
   "main": "webpack.config.js",
   "scripts": {
-    "build": "webpack",
-    "start": "webpack-dev-server --open --mode development"
+    "build": "NODE_ENV=production webpack",
+    "start": "NODE_ENV=production webpack-dev-server --open --mode development"
   },
   "keywords": [],
   "author": "Andrew Usher",
@@ -31,6 +31,7 @@
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
     "webpack": "^4.5.0",
+    "webpack-bundle-analyzer": "^2.11.1",
     "webpack-cli": "^2.0.14",
     "webpack-dev-server": "^3.1.3"
   },
