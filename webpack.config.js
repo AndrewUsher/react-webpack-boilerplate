@@ -2,10 +2,12 @@ const path = require('path')
 const webpack = require('webpack')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const Stylish = require('webpack-stylish')
 const prod = process.env.NODE_ENV === 'production'
 
 module.exports = {
   entry: './src/index.js',
+  stats: 'errors-only',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'docs')
@@ -38,6 +40,7 @@ module.exports = {
   plugins: [
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
+    new Stylish(),
     new BundleAnalyzerPlugin()
   ],
   optimization: {
