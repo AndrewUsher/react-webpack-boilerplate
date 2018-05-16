@@ -5,7 +5,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const Stylish = require('webpack-stylish')
 const prod = process.env.NODE_ENV === 'production'
 
-module.exports = {
+const config = {
   entry: './src/index.js',
   stats: 'errors-only',
   output: {
@@ -41,8 +41,7 @@ module.exports = {
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-    new Stylish(),
-    new BundleAnalyzerPlugin()
+    new Stylish()
   ],
   optimization: {
     minimizer: [
@@ -60,3 +59,9 @@ module.exports = {
     ]
   }
 }
+
+if (prod) {
+  config.plugins.push(new BundleAnalyzerPlugin())
+}
+
+module.exports = config
