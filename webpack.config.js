@@ -40,12 +40,14 @@ module.exports = {
   plugins: [
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new Stylish(),
     new BundleAnalyzerPlugin()
   ],
   optimization: {
     minimizer: [
       new UglifyJsPlugin({
+        extractComments: true,
         cache: true,
         parallel: true,
         uglifyOptions: {
