@@ -14,7 +14,6 @@ const config = {
   },
   devtool: prod ? 'source-map' : 'inline-source-map',
   devServer: {
-    contentBase: './docs',
     compress: true,
     hot: true,
     port: 3000,
