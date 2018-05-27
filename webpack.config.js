@@ -15,6 +15,7 @@ const config = {
   devtool: prod ? 'source-map' : 'inline-source-map',
   devServer: {
     compress: true,
+    contentBase: path.resolve(__dirname, 'docs'),
     hot: true,
     port: 3000,
     stats: 'errors-only'
