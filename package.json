@@ -5,7 +5,7 @@
   "main": "webpack.config.js",
   "scripts": {
     "build": "NODE_ENV=production webpack --mode production",
-    "start": "webpack-dev-server --open --mode development"
+    "start": "webpack-dev-server --open --mode development --progress"
   },
   "keywords": [],
   "author": "Andrew Usher",
