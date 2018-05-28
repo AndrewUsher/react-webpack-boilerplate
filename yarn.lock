@@ -1125,6 +1125,10 @@ async-limiter@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/async-limiter/-/async-limiter-1.0.0.tgz#78faed8c3d074ab81f22b4e985d79e8738f720f8"
 
+async-throttle@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/async-throttle/-/async-throttle-1.1.0.tgz#229e7f3fa7a2a797e86f360e6309a08224d4fa7a"
+
 async@^1.5.0, async@^1.5.2:
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/async/-/async-1.5.2.tgz#ec6a61ae56480c0c3cb241c95618e20892f9672a"
@@ -4752,6 +4756,14 @@ imagemin-gifsicle@^5.1.0:
     gifsicle "^3.0.0"
     is-gif "^1.0.0"
 
+imagemin-jpegtran@^5.0.2:
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/imagemin-jpegtran/-/imagemin-jpegtran-5.0.2.tgz#e6882263b8f7916fddb800640cf75d2e970d2ad6"
+  dependencies:
+    exec-buffer "^3.0.0"
+    is-jpg "^1.0.0"
+    jpegtran-bin "^3.0.0"
+
 imagemin-mozjpeg@^7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/imagemin-mozjpeg/-/imagemin-mozjpeg-7.0.0.tgz#d926477fc6ef5f3a768a4222f7b2d808d3eba568"
@@ -4760,7 +4772,7 @@ imagemin-mozjpeg@^7.0.0:
     is-jpg "^1.0.0"
     mozjpeg "^5.0.0"
 
-imagemin-optipng@^5.2.1:
+imagemin-optipng@^5.1.0, imagemin-optipng@^5.2.1:
   version "5.2.1"
   resolved "https://registry.yarnpkg.com/imagemin-optipng/-/imagemin-optipng-5.2.1.tgz#d22da412c09f5ff00a4339960b98a88b1dbe8695"
   dependencies:
@@ -4768,7 +4780,7 @@ imagemin-optipng@^5.2.1:
     is-png "^1.0.0"
     optipng-bin "^3.0.0"
 
-imagemin-pngquant@^5.0.0:
+imagemin-pngquant@^5.0.0, imagemin-pngquant@^5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/imagemin-pngquant/-/imagemin-pngquant-5.1.0.tgz#b9eb563d9e6a3876f6248be0061ba1b0ef269c07"
   dependencies:
@@ -4793,7 +4805,25 @@ imagemin-webp@^4.0.0:
     exec-buffer "^3.0.0"
     is-cwebp-readable "^2.0.1"
 
-imagemin@^5.2.2:
+imagemin-webpack-plugin@^2.1.5:
+  version "2.1.5"
+  resolved "https://registry.yarnpkg.com/imagemin-webpack-plugin/-/imagemin-webpack-plugin-2.1.5.tgz#5f923d46b7f39c62230934e29a03422a75166ea4"
+  dependencies:
+    async-throttle "^1.1.0"
+    babel-runtime "^6.18.0"
+    imagemin "^5.3.1"
+    imagemin-gifsicle "^5.1.0"
+    imagemin-jpegtran "^5.0.2"
+    imagemin-optipng "^5.1.0"
+    imagemin-pngquant "^5.1.0"
+    imagemin-svgo "^6.0.0"
+    lodash.map "^4.6.0"
+    minimatch "^3.0.4"
+    mkdirp "^0.5.1"
+    util.promisify "^1.0.0"
+    webpack-sources "^1.1.0"
+
+imagemin@^5.2.2, imagemin@^5.3.1:
   version "5.3.1"
   resolved "https://registry.yarnpkg.com/imagemin/-/imagemin-5.3.1.tgz#f19c2eee1e71ba6c6558c515f9fc96680189a6d4"
   dependencies:
@@ -5298,6 +5328,14 @@ isurl@^1.0.0-alpha5:
     has-to-string-tag-x "^1.2.0"
     is-object "^1.0.1"
 
+jpegtran-bin@^3.0.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/jpegtran-bin/-/jpegtran-bin-3.2.0.tgz#f60ecf4ae999c0bdad2e9fbcdf2b6f0981e7a29b"
+  dependencies:
+    bin-build "^2.0.0"
+    bin-wrapper "^3.0.0"
+    logalot "^2.0.0"
+
 js-base64@^2.1.9:
   version "2.4.3"
   resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.4.3.tgz#2e545ec2b0f2957f41356510205214e98fad6582"
@@ -5649,6 +5687,10 @@ lodash.keys@^3.0.0:
     lodash._getnative "^3.0.0"
     lodash.isarguments "^3.0.0"
     lodash.isarray "^3.0.0"
+
+lodash.map@^4.6.0:
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/lodash.map/-/lodash.map-4.6.0.tgz#771ec7839e3473d9c4cde28b19394c3562f4f6d3"
 
 lodash.memoize@^4.1.2:
   version "4.1.2"
@@ -8744,7 +8786,7 @@ util-deprecate@~1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
 
-util.promisify@1.0.0, util.promisify@~1.0.0:
+util.promisify@1.0.0, util.promisify@^1.0.0, util.promisify@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/util.promisify/-/util.promisify-1.0.0.tgz#440f7165a459c9a16dc145eb8e72f35687097030"
   dependencies:
