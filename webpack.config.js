@@ -1,24 +1,21 @@
 const path = require('path')
 const webpack = require('webpack')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-const Stylish = require('webpack-stylish')
 const prod = process.env.NODE_ENV === 'production'
 
-const config = {
-  entry: './src/index.js',
-  stats: 'errors-only',
+// Common Plugins
+const Stylish = require('webpack-stylish')
+// Base config for development and production
+const baseConfig = {
+  plugins: [
+    new webpack.NamedModulesPlugin(),
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    new Stylish()
+  ],
   output: {
-    filename: 'bundle.js',
+    // Hash files to bust cache on change
+    filename: 'bundle.[hash:8].js',
     path: path.resolve(__dirname, 'docs')
-  },
-  devtool: prod ? 'source-map' : 'inline-source-map',
-  devServer: {
-    compress: true,
-    contentBase: path.resolve(__dirname, 'docs'),
-    hot: true,
-    port: 3000,
-    stats: 'errors-only'
   },
   module: {
     rules: [
@@ -81,12 +78,6 @@ const config = {
       }
     ]
   },
-  plugins: [
-    new webpack.NamedModulesPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-    new Stylish()
-  ],
   optimization: {
     minimizer: [
       new UglifyJsPlugin({
@@ -104,8 +95,55 @@ const config = {
   }
 }
 
-if (prod) {
-  config.plugins.push(new BundleAnalyzerPlugin())
+// Development plugins
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+
+// Development config
+const devConfig = {
+  entry: ['react-hot-loader/patch', './src/index.js'],
+  cache: true,
+  devServer: {
+    compress: true,
+    contentBase: './docs',
+    hot: true,
+    port: 3000,
+    stats: 'errors-only'
+  },
+  devtool: 'eval',
+  plugins: baseConfig.plugins.concat([
+    new FriendlyErrorsPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new HtmlWebpackPlugin({
+      template: './src/index.html'
+    })
+  ])
 }
 
-module.exports = config
+// Production Plugins
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const CompressionPlugin = require('compression-webpack-plugin')
+const ImageminPlugin = require('imagemin-webpack-plugin')
+
+// Production config
+const prodConfig = {
+  cache: false,
+  plugins: baseConfig.plugins.concat([
+    // Image optimization
+    new ImageminPlugin({
+      pngquant: { quality: '95-100' }
+    }),
+    // Bundle size analyzer with cool viz
+    new BundleAnalyzerPlugin(),
+    // Gzip all js, css, html, sass, scss, stylus files
+    new CompressionPlugin({
+      asset: '[path].gz[query]',
+      algorithm: 'gzip',
+      test: /\.jsx?$|\.css$|\.(scss|sass|styl)$|\.html$/,
+      threshold: 10240,
+      minRatio: 0.8
+    })
+  ])
+}
+
+module.exports = prod ? Object.assign(baseConfig, prodConfig) : Object.assign(baseConfig, devConfig)
