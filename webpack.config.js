@@ -20,11 +20,13 @@ const baseConfig = {
   module: {
     rules: [
       {
+        // No jsx yet, can add if needed
         test: /\.js$/,
         exclude: /node_modules/,
         use: 'babel-loader'
       },
       {
+        // Handle Stylus files
         test: /\.styl$/,
         use: ['style-loader', 'css-loader', 'stylus-loader']
       },
@@ -123,7 +125,7 @@ const devConfig = {
 // Production Plugins
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const CompressionPlugin = require('compression-webpack-plugin')
-const ImageminPlugin = require('imagemin-webpack-plugin')
+const ImageminPlugin = require('imagemin-webpack-plugin').default
 
 // Production config
 const prodConfig = {
@@ -131,6 +133,8 @@ const prodConfig = {
   plugins: baseConfig.plugins.concat([
     // Image optimization
     new ImageminPlugin({
+      // disable in production
+      disable: !prod,
       pngquant: { quality: '95-100' }
     }),
     // Bundle size analyzer with cool viz
