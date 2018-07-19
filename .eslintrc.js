@@ -143,6 +143,35 @@ module.exports = {
     }],
     "no-unused-vars": ["error", {
       "varsIgnorePattern": "[rR]eact"
-    }]
+    }],
+    "import/prefer-default-export": ["error", "always"],
+    "import/no-webpack-loader-syntax": ["error", "always"],
+    "import/no-useless-path-segments": ["error", "always"],
+    "import/no-unresolved": "error",
+    "import/no-self-import": "error",
+    "import/no-named-default": "error",
+    "import/no-named-as-default-member": "error",
+    "import/no-mutable-exports": "error",
+    "import/no-duplicates": "error",
+    "import/no-anonymous-default-export": ["error", {
+      "allowArray": false,
+      "allowArrowFunction": false,
+      "allowAnonymousClass": false,
+      "allowAnonymousFunction": false,
+      "allowCallExpression": true, // The true value here is for backward compatibility
+      "allowLiteral": false,
+      "allowObject": false
+    }],
+    "import/newline-after-import": ["error", {
+      count: 2
+    }],
+    "import/max-dependencies": ["error", {
+      "max": 8
+    }],
+    "import/group-exports": "error",
+    "import/first": "error",
+    "import/exports-last": "error",
+    "import/export": "error",
+    "import/default": "error",
   }
 }
