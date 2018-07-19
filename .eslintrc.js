@@ -3,7 +3,8 @@ const isDev = process.env.NODE_ENV !== 'development'
 module.exports = {
   "extends": "eslint:recommended",
   "plugins": [
-    "import"
+    "import",
+    "react"
   ],
   "env": {
     "browser": true,
@@ -173,5 +174,70 @@ module.exports = {
     "import/exports-last": "error",
     "import/export": "error",
     "import/default": "error",
+    "react/button-has-type": ["error", {
+      "submit": false
+    }],
+    "react/destructuring-assignment": ["error", "always"],
+    "react/jsx-closing-bracket-location": ["error", "tag-aligned"],
+    "react/jsx-curly-spacing": ["error", {
+      "when": "always"
+    }],
+    "react/jsx-handler-names": ["error", {
+      "eventHandlerPrefix": "handle,
+      "eventHandlerPropPrefix": "on"
+    }],
+    "react/jsx-indent-props": ["error", 2 "false"],
+    "react/jsx-indent": ["error", 2, 2],
+    "react/jsx-max-props-per-line": ["error", {
+      "maximum": 1,
+      "when": "always"
+    }],
+    "react/jsx-no-bind": ["error", {
+      "ignoreDOMComponents": false,
+      "ignoreRefs": false,
+      "allowArrowFunctions": false,
+      "allowFunctions": false,
+      "allowBind": false
+    }],
+    "react/jsx-no-duplicate-props": ["error", {
+      "ignoreCase": true
+    }],
+    "react/jsx-no-literals": ["error", {
+      "noStrings": false
+    }],
+    "react/jsx-no-target-blank": ["error", {
+      "enforceDynamicLinks": "never"
+    }],
+    "react/jsx-no-undef": ["error", {
+      "allowGlobals": true
+    }],
+    "react/jsx-props-no-multi-spaces": "error",
+    "react/jsx-sort-props": ["error", {
+      "callbacksLast": true,
+      "shorthandFirst": true,
+      "shorthandLast": false,
+      "ignoreCase": true,
+      "noSortAlphabetically": false,
+      "reservedFirst": true,
+    }],
+    "react/no-access-state-in-setstate": "error",
+    "react/no-danger": "error",
+    "react/no-deprecated": ["error", {
+      "react": "16.4.0"
+    }],
+    "react/no-direct-mutation-state": "error",
+    "react/no-multi-comp": "error",
+    "react/no-redundant-should-component-update": "error",
+    "react/no-this-in-sfc": "error",
+    "react/no-unknown-property": "error",
+    "react/no-unsafe": "error",
+    "react/no-unused-state": "error",
+    "react/no-will-update-set-state": "error",
+    "react/prefer-stateless-function": "error",
+    "react/require-optimization": "error",
+    "react/self-closing-comp": ["error", {
+      "component": true, 
+      "html": true
+    }]
   }
 }
