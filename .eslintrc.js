@@ -2,6 +2,14 @@ const isDev = process.env.NODE_ENV !== 'development'
 
 module.exports = {
   "extends": "eslint:recommended",
+  "plugins": [
+    "import"
+  ],
+  "env": {
+    "browser": true,
+    "node": true,
+    "jest": true,
+  },
   "parserOptions": {
     "ecmaVersion": 9,
     "sourceType": "module",
