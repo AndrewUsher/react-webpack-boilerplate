@@ -1,23 +1,16 @@
 {
-  "plugins": [
-    "react-hot-loader/babel"
-  ],
+  "plugins": ["react-hot-loader/babel"],
   "presets": [
     "@babel/preset-react",
     [
       "@babel/preset-env",
       {
         "targets": {
-          "browsers": [
-            ">0.25%",
-            "not ie 11",
-            "not op_mini all"
-          ]
+          "browsers": [">0.25%", "not ie 11", "not op_mini all"]
         },
         "loose": true,
         "modules": false
-      },
-      "@babel/preset-stage-2"
+      }
     ]
   ]
 }

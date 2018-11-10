@@ -140,13 +140,7 @@ const prodConfig = {
     // Bundle size analyzer with cool viz
     new BundleAnalyzerPlugin(),
     // Gzip all js, css, html, sass, scss, stylus files
-    new CompressionPlugin({
-      asset: '[path].gz[query]',
-      algorithm: 'gzip',
-      test: /\.jsx?$|\.css$|\.(scss|sass|styl)$|\.html$/,
-      threshold: 10240,
-      minRatio: 0.8
-    })
+    new CompressionPlugin()
   ])
 }
 
